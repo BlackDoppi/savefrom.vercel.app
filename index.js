@@ -5,8 +5,6 @@ const youtube = require('ytdl-core')
 
 const app = express()
 
-app.use(express.static('public'))
-
 
 app.get('/', async (req, res) => {
     const { link } = req.query
@@ -23,11 +21,14 @@ app.get('/', async (req, res) => {
         }
     }
 
-    res.sendFile(path.join(__dirname, 'html', 'index.html'))
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 
-const PORT = process.env.PORT || 8000
+app.use(express.static('public'))
+
+
+const PORT = process.env.PORT || 8080
 
 
 app.listen(PORT, () => {
