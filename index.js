@@ -28,9 +28,8 @@ app.get('/', async (req, res) => {
 
 
 const PORT = process.env.PORT || 8000
-const HOSTNAME = process.env.HOSTNAME || "localhost"
 
 
-app.listen(PORT, HOSTNAME, () => {
+app.listen(PORT, () => {
     console.info(`Server started at: http://localhost:${PORT}`)
 })
