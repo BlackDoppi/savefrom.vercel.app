@@ -21,11 +21,11 @@ app.get('/', async (req, res) => {
         }
     }
 
-    res.sendFile(path.join(__dirname, '../public', 'index.html'))
+    // res.sendFile(path.join(__dirname, '../public', 'index.html'))
 })
 
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 
 const PORT = process.env.PORT || 8080
