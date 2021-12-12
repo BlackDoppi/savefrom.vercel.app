@@ -6,7 +6,7 @@ const youtube = require('ytdl-core')
 const app = express()
 
 
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
     const { link } = req.query
 
     if (link) {
