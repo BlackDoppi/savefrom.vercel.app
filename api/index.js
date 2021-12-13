@@ -1,8 +1,15 @@
+const express = require('express')
+const cors = require('cors')
 const youtube = require('ytdl-core')
-const route = require('express').Router()
 
 
-route.get('/', async (req, res) => {
+const app = express()
+
+
+app.use(cors())
+
+
+app.get('/api', async (req, res) => {
     const { link } = req.query
 
     if (!link) return res.status(400).json({ error: "Bad Request" })
@@ -19,4 +26,8 @@ route.get('/', async (req, res) => {
 })
 
 
-module.exports = route
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+    console.info(`Server started at: http://localhost:${PORT}`)
+})

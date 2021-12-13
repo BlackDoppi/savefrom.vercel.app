@@ -14,7 +14,7 @@ const main = async (event) => {
 
     try {
         const response = await fetch("/api?" + new URLSearchParams({ link }))
-
+        console.log(response);
         const video = await response.json()
 
         thumbnail.src = video.videoDetails.thumbnails[0].url
