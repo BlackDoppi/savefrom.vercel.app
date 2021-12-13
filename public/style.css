@@ -84,3 +84,7 @@ footer {
     bottom: 0;
     padding: 1rem;
 }
+
+#copy {
+    text-align: center;
+}
