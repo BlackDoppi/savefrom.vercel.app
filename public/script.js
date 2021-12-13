@@ -1,4 +1,3 @@
-const link = document.querySelector('#link').value
 const title = document.querySelector('#title')
 const thumbnail = document.querySelector('#thumbnail')
 const links = document.querySelector('#links')
@@ -11,10 +10,10 @@ const main = async (event) => {
     links.innerHTML = ''
     thumbnail.src = ''
     title.innerHTML = "Please wait in a moment..."
+    const link = document.querySelector('#link').value
 
     try {
         const response = await fetch("/api?" + new URLSearchParams({ link }))
-        console.log(response);
         const video = await response.json()
 
         thumbnail.src = video.videoDetails.thumbnails[0].url

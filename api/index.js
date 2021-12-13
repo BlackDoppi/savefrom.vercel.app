@@ -18,6 +18,7 @@ app.get('/api', async (req, res) => {
         let { videoDetails, formats } = await youtube.getBasicInfo(link)
         formats = formats.filter(file => file.qualityLabel && file.audioChannels)
 
+        res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
         return res.json({ videoDetails, formats })
     } catch (error) {
         console.error(error);
