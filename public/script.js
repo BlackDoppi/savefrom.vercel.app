@@ -20,7 +20,8 @@ const main = async (event) => {
         title.innerText = video.videoDetails.title.slice(0, 70)
 
         for (let format of video.formats) {
-            links.innerHTML += `<a class="download" download="${video.videoDetails.title}" href="${format.url}">Download ${format.qualityLabel}</a> `
+            let link =  `<a class="download" download="${video.videoDetails.title}" href="/api/download/?${new URLSearchParams(format.url)}">Download ${format.qualityLabel}</a>`
+            links.innerHTML += link
         }
     } catch (error) {
         console.error(error);
@@ -31,6 +32,7 @@ submit.addEventListener('keydown', (event) => {
     if (event.keyCode == 13)
         main(event)
 })
+
 
 submit.addEventListener('submit', main)
 submit.addEventListener('click', main)

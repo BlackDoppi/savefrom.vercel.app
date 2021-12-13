@@ -27,6 +27,11 @@ app.get('/api', async (req, res) => {
 })
 
 
+app.get('/api/download', (req, res) => {
+    res.redirect(req.query.link)
+})
+
+
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
