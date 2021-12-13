@@ -1,4 +1,4 @@
-const title = document.querySelector('#title')
+const videoTitle = document.querySelector('#title')
 const thumbnail = document.querySelector('#thumbnail')
 const linksWrapper = document.querySelector('#links-wrapper')
 const result = document.querySelector('#result')
@@ -6,23 +6,23 @@ const submit = document.querySelector('#submit')
 
 
 // Getting video link
-const main = async (ev) => {
-    ev.preventDefault()
+const main = async event => {
+    event.preventDefault()
     linksWrapper.innerHTML = ''
     thumbnail.src = ''
-    title.innerHTML = "Please wait in a moment..."
+    videoTitle.innerText = "Please wait in a moment..."
     const link = document.querySelector('#link').value
 
     try {
         const response = await fetch('/api?' + new URLSearchParams({ link }))
         const video = await response.json()
+        const { title } = video.videoDetails
 
         thumbnail.src = video.videoDetails.thumbnails[0].url
-        title.innerText = video.videoDetails.title.slice(0, 70)
+        videoTitle.innerText = title.slice(0, 70)
 
         for (let format of video.formats) {
-            let url = "/api/download/?" + new URLSearchParams({ link: format.url })
-            let { title } = video.videoDetails
+            let url = format.url + "&" + new URLSearchParams({ title })
             let qty = format.qualityLabel
             let a = `<a class="download" download="${title}" href="${url}">Download ${qty}</a>`
             linksWrapper.innerHTML += a
