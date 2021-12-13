@@ -13,15 +13,18 @@ const main = async (event) => {
     const link = document.querySelector('#link').value
 
     try {
-        const response = await fetch("/api?" + new URLSearchParams({ link }))
+        const response = await fetch('/api?' + new URLSearchParams({ link }))
         const video = await response.json()
 
         thumbnail.src = video.videoDetails.thumbnails[0].url
         title.innerText = video.videoDetails.title.slice(0, 70)
 
         for (let format of video.formats) {
-            let link =  `<a class="download" download="${video.videoDetails.title}" href="/api/download/?${new URLSearchParams(format.url)}">Download ${format.qualityLabel}</a>`
-            links.innerHTML += link
+            let link = '/api/download/?' + new URLSearchParams({ link: format.url })
+            let { title } = video.videoDetails
+            let quality = format.qualityLabel
+            let a = `<a class="download" download="${title}" href="${link}">Download ${quality}</a>`
+            links.innerHTML += a
         }
     } catch (error) {
         console.error(error);
