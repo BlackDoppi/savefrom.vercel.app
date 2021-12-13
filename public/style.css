@@ -79,12 +79,24 @@ button {
 }
 
 footer {
+    height: 300px;
+    width: 100%;
     color: #717171;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     padding: 1rem;
 }
 
+footer a, footer #copy {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+footer a {
+    margin-left: 8px;
+}
+
 #copy {
-    text-align: center;
+    text-align: center
 }
