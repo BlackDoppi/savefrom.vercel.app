@@ -1,6 +1,6 @@
 const title = document.querySelector('#title')
 const thumbnail = document.querySelector('#thumbnail')
-const linksWrapper = document.querySelector('#links')
+const linksWrapper = document.querySelector('#links-wrapper')
 const result = document.querySelector('#result')
 const submit = document.querySelector('#submit')
 
