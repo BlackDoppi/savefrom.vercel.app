@@ -20,7 +20,7 @@ const main = async (event) => {
         title.innerText = video.videoDetails.title.slice(0, 70)
 
         for (let format of video.formats) {
-            links.innerHTML += `<a class="download" href="${format.url}">Download ${format.qualityLabel}</a> `
+            links.innerHTML += `<a class="download" href="${format.url}" download>Download ${format.qualityLabel}</a> `
         }
     } catch (error) {
         console.error(error);
