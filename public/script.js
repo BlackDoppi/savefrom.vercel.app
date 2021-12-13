@@ -13,7 +13,7 @@ const main = async (event) => {
     title.innerHTML = "Please wait in a moment..."
 
     try {
-        const response = await fetch("/?" + new URLSearchParams({ link }))
+        const response = await fetch("/api?" + new URLSearchParams({ link }))
 
         const video = await response.json()
 
