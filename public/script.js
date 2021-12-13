@@ -21,7 +21,7 @@ const main = async (ev) => {
         title.innerText = video.videoDetails.title.slice(0, 70)
 
         for (let format of video.formats) {
-            let url = format.url
+            let url = "/api/download/?" + new URLSearchParams({ link: format.url })
             let { title } = video.videoDetails
             let qty = format.qualityLabel
             let a = `<a class="download" download="${title}" href="${url}">Download ${qty}</a>`
